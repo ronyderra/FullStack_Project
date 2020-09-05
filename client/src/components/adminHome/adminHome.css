@@ -1,0 +1,27 @@
+.modal-body {
+  color: black
+}
+
+.modal-title {
+  color: rgb(119, 22, 22)
+}
+
+.modal-header {
+  margin: auto;
+}
+
+.modal-footer {
+  margin: auto;
+}
+
+.breadCrom {
+  text-align: center;
+}
+
+/* *, div {
+  color: #007bff;
+} */
+b{
+  text-decoration: underline;
+  color: #007bff;
+}

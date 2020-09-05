@@ -1,0 +1,18 @@
+.loading {
+    position: relative;
+    width: 50%;
+    height: 20%;
+    border-radius: 50%;
+    box-shadow: 0 90px 90px 0 rgba(0, 68, 255, 0.2), 0 90px 90px 0 rgba(255, 255, 255, 0.19);
+}
+
+.centered {
+    position: absolute;
+    font-size: larger;
+    color: white;
+    font-weight: 900;
+    top: 50%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+
+}

@@ -1,0 +1,95 @@
+
+.imagesContainer {
+    cursor: pointer;
+    position: relative;
+}
+
+.layoutImage {
+    transition: .5s ease;
+    opacity: 10;
+    
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.imagesContainer:hover .layoutImage {
+    opacity: 0.3;
+}
+.imagesContainer:hover .middle {
+    opacity: 1;
+}
+
+
+.bottomRight {
+    position: absolute;
+    bottom: 8px;
+    right: 28px;
+    text-align: right;
+}
+
+.topLeft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+.layoutImage {
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+}
+
+.title {
+    color: white;
+    font-size: 25px;
+    border: none;
+    margin-bottom: 0px;
+    padding: 0px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.text {
+    font-weight: normal;
+    font-size: 19px;
+    color: white;
+    border: black;
+    text-shadow: 1px 1px 1px black;
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.bottomRightBr {
+    background-color: #ffffff;
+    opacity: 0.6;
+    line-height: 18px;
+}
+
+.span1 {
+    color: black;
+    font-weight: 800;
+    padding: 5px;
+}
+
+.span2 {
+    color: black;
+    font-weight: 800;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.icon {
+    position: absolute;
+    left: 134px;
+    top: 7px;
+    text-shadow: 1px 1px 1px #000;
+    border: none!important;
+    height: 25px;
+    width: 25px;
+}
