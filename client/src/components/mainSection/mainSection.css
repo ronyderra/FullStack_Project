@@ -1,0 +1,19 @@
+/* left side */
+.textContainer{
+    margin-top: 100px;
+}
+/* right side */
+.imagesContainer {
+  cursor: pointer;
+  position: relative;
+}
+#secondaryImg {
+  width: 80px;
+}
+.bottomRight {
+  position: absolute;
+  bottom: 78px;
+  right: 40px;
+}
+
+

@@ -7,10 +7,8 @@ interface HeaderState {
     userFirstName: string,
     iconSun: boolean,
     iconMoon: boolean,
-
 }
 export class Header extends Component<any, HeaderState> {
-
     public constructor(props: any) {
         super(props);
         this.state = {
@@ -19,7 +17,6 @@ export class Header extends Component<any, HeaderState> {
             iconMoon: false
         }
     }
-
     public handelThemAndIcon = () => {
         this.setState({
             iconSun : !this.state.iconSun
@@ -29,13 +26,11 @@ export class Header extends Component<any, HeaderState> {
         })
         this.props.handleTheme()
     }
-
     public logout = async () => {
         sessionStorage.clear();
         await axios.post<any>("/api/auth/logout/");
         this.props.changeName('')
     }
-
     public render() {
         return (
             <div className="header">

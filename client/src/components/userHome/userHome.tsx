@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import "./userHome.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import {  CardColumns, Row, Col, CardGroup, Container, } from 'react-bootstrap';
+import { CardColumns, Row, Col, CardGroup, Container, } from 'react-bootstrap';
 import { VacationsTableModel } from "../../models/vacation-model";
 import socket from "../../socket";
 import axios from "axios";
 import { ModalPopUp } from "../modalPopUp/modalPopUp";
-import ImageSlider from './../Cards/ImageSlider/imageSlider';
-import { BasicCard } from "../Cards/basicCard/basicCard";
+import ImageSlider from '../UserCards/ImageSlider/imageSlider';
+import { BasicCard } from "../UserCards/basicCard/basicCard";
 import { ActionType } from "../../redux/action-type";
 import { connect } from 'react-redux'
 import { Loading } from "../loading/loading";
-import { FlippyCard } from '../Cards/flippyCard/flippyCard';
-import { StaticCard } from "../Cards/staticCard/staticCard";
-
+import { FlippyCard } from '../UserCards/flippyCard/flippyCard';
+import { StaticCard } from "../UserCards/staticCard/staticCard";
+import { MainSectionUi } from "../mainSection/mainSection";
 
 interface userHomeState {
     modalBool: boolean
@@ -29,7 +29,6 @@ export class UserHomePage extends Component<any, userHomeState> {
 
     public async componentDidMount() {
         try {
-
             this.props.showLogout()
             socket.on("admin-change-delete", id => {
                 this.props.dispatch({ type: ActionType.DeleteVacation, payload: id })
@@ -40,29 +39,17 @@ export class UserHomePage extends Component<any, userHomeState> {
             socket.on("admin-change-update", (id, update) => {
                 this.props.dispatch({ type: ActionType.UpdateVacation, payload: id, update })
             })
-
             if (this.props.allVacations.length > 0) {
                 return;
             }
-
-            // setTimeout(async () => {
             const response = await axios.get<VacationsTableModel[]>("/api/vacation/allVacations", { withCredentials: true });
             const allVacations = response.data;
             this.props.dispatch({ type: ActionType.GetAllVacations, payload: allVacations })
-
-            // }, 3000)
-            // update store
-
-
         }
         catch (err) {
             alert(err.message);
         }
-
     }
-
-
-
     public follow = async (event) => {
         const bool = event.target.checked
         let val = event.target.id
@@ -76,7 +63,6 @@ export class UserHomePage extends Component<any, userHomeState> {
                 modalBool: true
             })
         }
-
     }
     public handelCloseA = () => {
         this.setState({
@@ -88,28 +74,21 @@ export class UserHomePage extends Component<any, userHomeState> {
             modalBool: false
         })
         this.props.history.push("/register");
-
     }
-
-
-
 
     public render() {
         const { modalBool } = this.state;
-
-
         return (
             <div className="userHome">
-
                 {this.props.allVacations.length === 0 && <Loading />}
-
-
+                <MainSectionUi title={'We all want to follow are dreams, but for now just follow a vacation'} 
+                paragrph=
+                {' “A vacation is what you take when you can no longer take what you’ve been taking.”  – Earl Wilson '}
+                leftSideBtnText={'get Started'} rightSideBtnText={'try Task Demo'}  />
                 {this.props.allVacations.length > 0 &&
                     <React.Fragment>
                         {/* <h2>Follow a vacation</h2> */}
                         <hr />
-
-
                         <div className="firstRowBasicCard">
                             <CardColumns>
                                 {this.props.allVacations.slice(0, 3).map((vacation, key) => {
@@ -121,7 +100,6 @@ export class UserHomePage extends Component<any, userHomeState> {
                             </CardColumns>
                         </div>
                         <hr />
-
                         <div className="secondRowImageSlider">
                             <Container>
                                 <Row>
@@ -131,7 +109,6 @@ export class UserHomePage extends Component<any, userHomeState> {
                             </Container>
                         </div>
                         <hr />
-
                         <div className="thirdRowBasicCard">
                             <CardColumns>
                                 {this.props.allVacations.slice(9, 12).map((vacation, key) => {
@@ -144,7 +121,6 @@ export class UserHomePage extends Component<any, userHomeState> {
                             </CardColumns>
                         </div>
                         <hr />
-
                         <div className="fourthRowFlippyCard">
                             <CardGroup>
                                 < Row>
@@ -160,7 +136,6 @@ export class UserHomePage extends Component<any, userHomeState> {
                             </CardGroup>
                         </div>
                         <hr />
-
                         <div className="fifthRowStaticCard">
                             <Container>
                                 <Row>
@@ -176,7 +151,6 @@ export class UserHomePage extends Component<any, userHomeState> {
                             </Container>
                         </div>
                         <hr />
-
                         <div className="lastRowBasicCard">
                             <CardColumns>
                                 {this.props.allVacations.slice(17, this.props.allVacations.length).map((vacation, key) => {
@@ -188,14 +162,10 @@ export class UserHomePage extends Component<any, userHomeState> {
                                 })}
                             </CardColumns>
                         </div>
-
                     </React.Fragment>
                 }
-
                 <ModalPopUp toggle={modalBool} title={""} question={"in order to folllow you must LOGIN or REGESTER"}
                     firstOptionText={"close"} secondeOptionText={"register"} firstOption={this.handelCloseA} secondeOption={this.handelCloseB} />
-
-
             </div>
         )
     }

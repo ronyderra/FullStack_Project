@@ -24,13 +24,10 @@ export class Register extends Component<any, RegisterState>{
         }
     }
     public handleSubmit = async (event) => {
-
         // const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
-
         const response = await axios.post<any>("/api/auth/register", this.state, { withCredentials: true });
-
         if (response.data.err) {
             alert(response.data.err)
         }
@@ -41,8 +38,6 @@ export class Register extends Component<any, RegisterState>{
             })
             this.props.history.push("/login")
         }
-
-
     }
 
     public handleInputChange = (event) => {
@@ -75,12 +70,9 @@ export class Register extends Component<any, RegisterState>{
     public render() {
         const { validated } = this.state
         return (
-
             <div className='register'>
                 <NavLink to="/login" exact>go back</NavLink>
-
                 <h1>Register</h1>
-
                 <Form noValidate validated={validated} onSubmit={this.handleSubmit}>
                     <Form.Row>
                         <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -126,7 +118,6 @@ export class Register extends Component<any, RegisterState>{
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
-
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>password</Form.Label>
                             <Form.Control type="text" placeholder="password"
@@ -142,5 +133,4 @@ export class Register extends Component<any, RegisterState>{
             </div>
         )
     }
-
 }

@@ -2,10 +2,6 @@ import "./imageSlider.css"
 import React from "react";
 import { Carousel } from "react-bootstrap";
 
-
-
-
-
 const ImageSlider = ({ info }) => {
     return (
         <div className="carouselComp">
@@ -21,10 +17,8 @@ const ImageSlider = ({ info }) => {
                             <h3 className="title">{e.destination}</h3>
                         </Carousel.Caption>
                     </Carousel.Item>)
-
                 })}
             </Carousel>
-
         </div>
     )
 }

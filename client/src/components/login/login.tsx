@@ -4,8 +4,6 @@ import { UserInfoModel } from "../../models/userInfo-model"
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { Form, Col, Container, Button, Row } from "react-bootstrap";
-import ImageSlider from "../Cards/ImageSlider/imageSlider";
-
 
 interface LoginState {
     userName
@@ -13,9 +11,7 @@ interface LoginState {
     info
 }
 
-
 export class Login extends Component<any, LoginState>{
-
     public constructor(props: any) {
         super(props);
         this.state = {
@@ -30,23 +26,17 @@ export class Login extends Component<any, LoginState>{
         }
     };
 
-
     public isFormLegal = async () => {
-
         const response = await axios.post<UserInfoModel>("/api/auth/login", this.state, { withCredentials: true });
         const user = response.data;
         sessionStorage.setItem("isAdmin", String(user.isAdmin));
-        // sessionStorage.setItem("username", user.userName)
         this.props.data.changeName(user.firstName)
-
         if (typeof (user) === "string") {//if user dosnt exist
             alert(user);
             // go to resitration
             this.props.history.push("/register");
         };
-
         if (typeof (user) === "object") {
-
             // if admin redirect to admin page else to user page
             if (user.isAdmin === 1) {
                 this.props.history.push("/adminHome");
@@ -75,7 +65,6 @@ export class Login extends Component<any, LoginState>{
 
 
     public render() {
-
         return (
             <div className="login">
                 <div className="container"  >
@@ -98,12 +87,9 @@ export class Login extends Component<any, LoginState>{
                                 <Row className="justify-content-md-center" >
                                     <Col sm={12} lg="3"> <Button size="sm" block onClick={this.isFormLegal}>login</Button></Col>
                                 </Row>
-
                             </Form>
-
                         </Container>
                     </div>
-
                     <div className="breadCrumbs">
                         <Container>
                             {/* <Row>

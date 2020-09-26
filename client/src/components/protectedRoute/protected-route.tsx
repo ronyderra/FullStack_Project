@@ -2,11 +2,9 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 class ProtectedRoute extends React.Component<any> {
-
     componentDidMount(){
         this.props.showLogout()
     }
-
     render() {
         let isAuthenticated
         const Component = this.props.component;
@@ -15,7 +13,6 @@ class ProtectedRoute extends React.Component<any> {
         } else {
             isAuthenticated = false;
         }
-        
         return isAuthenticated ? (
             <Component {...this.props} />
         ) : (

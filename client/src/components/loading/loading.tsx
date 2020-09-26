@@ -1,9 +1,8 @@
-
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import './loading.css'
-export function Loading(props) {
 
+export function Loading(props) {
     return (
         <div>
             <Container>
@@ -18,6 +17,4 @@ export function Loading(props) {
             </Container>
         </div>
     )
-
-
 }

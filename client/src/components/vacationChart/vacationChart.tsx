@@ -6,7 +6,6 @@ import axios from "axios";
 import { NavLink } from 'react-router-dom';
 
 export default class App extends React.Component {
-
     public constructor(props: any) {
         super(props);
 
@@ -27,10 +26,7 @@ export default class App extends React.Component {
 
     public async componentDidMount() {
         try {
-
-
             const response = await axios.get<VacationsTableModel[]>("/api/vacation/allVacations", { withCredentials: true });
-
             // extracting labels
             const allVacations = response.data;
             const filterdVacations = allVacations.filter((d) => {
@@ -41,9 +37,6 @@ export default class App extends React.Component {
             })
             const labelsData = filterdVacations.map(v => { return (v.destination) })
             this.setState({ labels: labelsData });
-
-
-
             // extracting Data
             const data = allVacations.map(f => { return f.followers })
             const filterdData = data.filter(f => f > 0)
@@ -62,9 +55,9 @@ export default class App extends React.Component {
             alert(err.message);
         }
     }
+    
     render() {
         return (
-
             <div className="barChart">
                 <NavLink to="/adminHome" exact>go back</NavLink>
                 <Bar

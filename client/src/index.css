@@ -2,14 +2,15 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  /* text-align: center; */
   font-size: x-large;
-  /* background-color: rgb(17, 18, 19); */
-  
 }
-
 span{
-  /* color: red; */
   font-size: small;
 }
-
+button{
+  background-color: #0096ea !important;
+  border-radius: 25px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  font-size: large !important;
+}

@@ -8,15 +8,11 @@ import ProtectedRoute from "../protectedRoute/protected-route";
 import VacationChart from "../vacationChart/vacationChart";
 import { UserHome } from "../userHome/userHome";
 import { Register } from "../register/register";
-
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../../theme';
 import { GlobalStyles } from '../../global';
-import { Form, Col } from "react-bootstrap";
 import { Header } from "../header/header";
-
-import { Container, Row } from "react-bootstrap";
-
+import { Container } from "react-bootstrap";
 
 interface LayoutState {
     theme: string
@@ -67,10 +63,8 @@ export class Layout extends Component<any, LayoutState> {
                             <header>
                                 <Header logoutApperance={bool} userFirstName={name} changeName={this.changeName} handleTheme={this.handleTheme} />
                             </header>
-                            <main>
-                                <Container>
-
-
+                            {/* <main> */}
+                                <Container>    
                                     <Switch>
                                         <Redirect from="/" to="/login" exact />
                                         <Route path="/login" render={(props) => (<Login {...props} data={{ name: name, changeName: this.changeName.bind(this) }} />)} />
@@ -80,11 +74,8 @@ export class Layout extends Component<any, LayoutState> {
                                         <Route path="/userHome" render={(props) => <UserHome {...props} showLogout={this.showLogout} />} exact />
                                         <ProtectedRoute path="/addVacation" component={AddVacation} showLogout={this.showLogout} exact />
                                     </Switch>
-
-
                                 </Container>
-                            </main>
-
+                            {/* </main> */}
                         </BrowserRouter>
                     </div>
                 </>

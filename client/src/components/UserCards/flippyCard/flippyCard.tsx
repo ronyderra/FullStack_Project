@@ -1,17 +1,12 @@
 import React from "react";
 import { Form, Col, } from 'react-bootstrap';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
-
 import './flippyCard.css'
 
-
 export function FlippyCard(props) {
-
     function doNow(event) {
         props.function(event)
     }
-
-
     return (
         <div>
             <Col key={props.id}>
@@ -31,6 +26,4 @@ export function FlippyCard(props) {
             </Col>
         </div>
     )
-
-
 }

@@ -1,0 +1,28 @@
+.card:hover {
+    opacity: 1;
+    box-shadow: 0 50px 50px 0 rgba(0, 68, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    cursor: pointer;
+}
+.cardImage {
+    height: 220px;
+    width: 100%;
+}
+.card>.card-footer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-shadow: 0 50px 50px 0 rgba(0, 68, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+}
+small{
+    color: #ffffff;
+}
+.card-text {
+    margin-bottom: 2px;
+    color: #ffffff !important;
+}
+.card >.card-body {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+.card-title{
+    color: #ffffff;
+}
