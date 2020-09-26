@@ -1,5 +1,4 @@
 const Joi = require("joi");
-const { json } = require("express");
 
 class User {
     constructor(userId, firstName, lastName, userName, password, isAdmin) {
@@ -10,7 +9,6 @@ class User {
         if (password !== undefined) this.password = password;
         this.isAdmin = isAdmin;
     }
-
     validatePost() {
         const schema = Joi.object({
             userId: Joi.optional(),
@@ -19,18 +17,10 @@ class User {
             userName: Joi.string().regex(/^[a-zA-Z]*$/).token().required().min(0).max(30),
             password: Joi.string().regex(/[0-9]/).token().required().min(0).max(10000),
             isAdmin: Joi.optional(),
-
         });
-
         const result = schema.validate(this);   // { abortEarly: false } = Return all errors
-
         return result.error ? result.error.details.map(err => err.message) : null; // null = no errors
     }
-
-
-
-
-
 }
 
 module.exports = User;
