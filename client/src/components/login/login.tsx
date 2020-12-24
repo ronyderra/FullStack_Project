@@ -8,7 +8,6 @@ import { Form, Col, Container, Button, Row } from "react-bootstrap";
 interface LoginState {
     userName
     password
-    info
 }
 
 export class Login extends Component<any, LoginState>{
@@ -17,12 +16,6 @@ export class Login extends Component<any, LoginState>{
         this.state = {
             userName: "",
             password: null,
-            info: [
-                { destination: "England", id: 1, image: "/assets/england.jpeg" },
-                { destination: "California", id: 2, image: "/assets/California.jpeg" },
-                { destination: "Mexico", id: 3, image: "/assets/mexico.jpg" }
-            ]
-
         }
     };
 
@@ -67,13 +60,26 @@ export class Login extends Component<any, LoginState>{
     public render() {
         return (
             <div className="login">
-                <div className="container"  >
-                    <h6 id="title">Sign In</h6>
-                    <div className="loginForm">
+                <Form>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>User Name</Form.Label>
+                        <Form.Control name="userName" onChange={this.handleInputChange}  placeholder="Enter user name" />
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Check me out" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit"> Submit</Button>
+                </Form>
+                {/* <h6 id="title">Sign In</h6>
                         <Container fluid={"sm"}>
                             <Form >
                                 <Row className="justify-content-md-center" >
-                                    <Col sm={12} lg="6"><label >User Name:</label>  <Form.Control name="userName" size="sm" placeholder="User name" onChange={this.handleInputChange} /> </Col>
+                                    <Col sm={12} lg="6"> <Form.Label>User Name:</Form.Label>  <Form.Control name="userName" size="sm" placeholder="User name" onChange={this.handleInputChange} /> </Col>
                                 </Row>
                                 <Row className="justify-content-md-center" >
                                     <Col sm={12} lg="6"> <label >Password:</label>  <Form.Control name="password" size="sm" placeholder="Password" onChange={this.handleInputChange} /> </Col>
@@ -88,24 +94,8 @@ export class Login extends Component<any, LoginState>{
                                     <Col sm={12} lg="3"> <Button size="sm" block onClick={this.isFormLegal}>login</Button></Col>
                                 </Row>
                             </Form>
-                        </Container>
-                    </div>
-                    <div className="breadCrumbs">
-                        <Container>
-                            {/* <Row>
-                                <Col sm={12} lg={{ span: 8, offset: 2 }}><ImageSlider info={this.state.info} /></Col>
-                            </Row> */}
-                            {/* <Row >
-                                <Col sm={12} lg={{ span: 8, offset: 2 }}>
-                                    <NavLink to="/register" exact> go register</NavLink>/
-                                <NavLink to="/userHome" exact>enter as a guest</NavLink>
-                                </Col>
-                            </Row> */}
-                        </Container>
-                    </div>
-                </div>
+                        </Container> */}
             </div>
         )
     }
-
 }
